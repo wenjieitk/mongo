@@ -1,0 +1,25 @@
+{
+  "name": "mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wenjieitk/mongo.git"
+  },
+  "author": "wenjie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wenjieitk/mongo/issues"
+  },
+  "homepage": "https://github.com/wenjieitk/mongo#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "mongoose": "^5.2.5"
+  }
+}
