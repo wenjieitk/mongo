@@ -22,5 +22,12 @@ describe('Finding users out of database', () => {
         });
     });
 
-
+    it('it should find a user with a particular id', (done) => {
+        User.findOne({
+            _id:joe._id
+        }).then((user) => {
+            assert(user.name === 'Joe');
+            done();
+        });
+    });
 });
