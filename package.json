@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha users/**/*.test.js"
+    "test": "mocha users/test"
   },
   "repository": {
     "type": "git",

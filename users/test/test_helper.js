@@ -1,12 +1,10 @@
-const mongoose = require('../../index');
+process.env.NODE_ENV = 'test'
+const mongoose = require('mongoose');
 
-// const mongoose = require('mongoose');
+const mongoUri ='mongodb://localhost:27017/Users_test';
 
-// mongoose.connect('mongodb://localhost:27017/users_test', {
-//     useNewUrlParser: true
-// });
-// mongoose.connection
-//     .once('open', () => console.info('db connected'))
-//     .on('error', (error) => {
-//         console.error('Unable connect to DB \n', error);
-//     });å
+mongoose.Promise = global.Promise;
+
+mongoose.connect(mongoUri, {
+    useNewUrlParser: true
+});
