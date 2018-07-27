@@ -3,8 +3,24 @@ const mongoose = require('mongoose');
 
 const mongoUri ='mongodb://localhost:27017/Users_test';
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true
+});
+
+mongoose.connection
+    .once('open', () => console.log('db connected'))
+    .on('error' , (error) => {
+        console.error('Unable connect to db\n', error);
+    });
+
+// beforeEach() runs before each test started
+// remove all the test data before each test start
+// test run only after the db data is remove
+beforeEach((done) => {
+    mongoose.connection.collections.users.drop(() => {
+        // ready to run the next test
+        done();
+    });
 });
