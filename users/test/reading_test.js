@@ -17,7 +17,7 @@ describe('Finding users out of database', () => {
         User.find({
             name: 'Joe'
         }).then((users) => {
-            assert(users[0]._id.toString() === joe._id.toString());
+            assert(users[0]._id.toHexString() === joe._id.toHexString());
             done();
         });
     });
