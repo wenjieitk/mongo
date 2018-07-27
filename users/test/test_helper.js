@@ -4,7 +4,8 @@ const mongoUri = 'mongodb://localhost:27017/Users_test';
 
 mongoose.Promise = global.Promise;
 
-// make sure the db is connected before run the test
+// make sure the db is connected before run the all test
+// only run once at the very beginning
 before((done) => {
     mongoose.connect(mongoUri, {
         useNewUrlParser: true
@@ -24,7 +25,7 @@ before((done) => {
 // beforeEach() runs before each test started
 // remove all the test data before each test start
 // test run only after the db data is remove
-beforeEach((done) => {
+beforeEach((done) => {    
     mongoose.connection.collections.users.drop(() => {
         // ready to run the next test
         done();
