@@ -23,7 +23,8 @@ const UserSchema = new Schema({
         // required and custom error message to user
     },
     // sub-documents
-    posts: [PostSchema]
+    posts: [PostSchema],
+    likes: Number
 });
 
 UserSchema.virtual('postcount').get(function() {
