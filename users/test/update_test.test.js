@@ -74,7 +74,7 @@ describe('Updating records', () => {
         );
     });
 
-    it('It should update postcount incremented by 1', (done) => {
+    xit('It should update postcount incremented by 1', (done) => {
         User.update({
             name: 'Joe'
         },{
