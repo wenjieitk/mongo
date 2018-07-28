@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    name: String,
+    name: {
+        type: String,
+        // required and custom error message to user
+        required: [
+            true,
+            'Name is required.'
+        ]
+    },
     postcount: Number
 });
 

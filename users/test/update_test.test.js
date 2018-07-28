@@ -83,9 +83,7 @@ describe('Updating records', () => {
             }
         }).then(() => User.findOne({
             name: 'Joe'
-        })).then((user) => {
-            console.log(user);
-            
+        })).then((user) => {            
             assert(user.postcount === 2);
             done();
         });
