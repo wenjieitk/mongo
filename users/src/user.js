@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const PostSchema = require('./post');
 
 const UserSchema = new Schema({
     name: {
@@ -21,7 +22,9 @@ const UserSchema = new Schema({
         // },
         // required and custom error message to user
     },
-    postcount: Number
+    postcount: Number,
+    // sub-documents
+    posts: [PostSchema]
 });
 
 const User = mongoose.model('user', UserSchema); // User represent whole user collection of data
