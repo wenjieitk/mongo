@@ -22,9 +22,13 @@ const UserSchema = new Schema({
         // },
         // required and custom error message to user
     },
-    postcount: Number,
     // sub-documents
     posts: [PostSchema]
+});
+
+UserSchema.virtual('postcount').get(function() {
+    // this -> getter, user instances
+    return this.posts.length;
 });
 
 const User = mongoose.model('user', UserSchema); // User represent whole user collection of data
