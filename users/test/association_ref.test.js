@@ -36,8 +36,11 @@ describe('Associations ref testing', () => {
     it.only('it should saves a relation between a user and a blogpost', (done) => {
         User.findOne({
             name: 'Joe'
-        }).then((user) => {
+        })
+        .populate('blogPosts') // modifier query, before mongo query executed
+        .then((user) => {
             console.log(user);
+            assert(user.blogPosts[0].title === 'blogPost');
             done();
         })
     });
