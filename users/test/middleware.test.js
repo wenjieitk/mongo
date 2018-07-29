@@ -31,7 +31,7 @@ describe('Middleware test', () =>{
         });
     });
 
-    it.only('it should clean up dangling blogposts on remove', (done) => {
+    it('it should clean up dangling blogposts on remove', (done) => {
         // middleware remove
         joe.remove()
             .then(() => BlogPost.countDocuments())

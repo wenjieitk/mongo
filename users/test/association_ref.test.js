@@ -33,7 +33,7 @@ describe('Associations ref testing', () => {
         });
     });
 
-    it.only('it should saves a relation between a user and a blogpost', (done) => {
+    it('it should saves a relation between a user and a blogpost', (done) => {
         User.findOne({
             name: 'Joe'
         })
@@ -45,7 +45,7 @@ describe('Associations ref testing', () => {
         })
     });
 
-    it.only('it should saves a full relation graph', (done) => {
+    it('it should saves a full relation graph', (done) => {
         User.findOne({
             name: 'Joe'
         }).populate({
