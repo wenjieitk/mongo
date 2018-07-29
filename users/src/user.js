@@ -24,7 +24,12 @@ const UserSchema = new Schema({
     },
     // sub-documents
     posts: [PostSchema],
-    likes: Number
+    likes: Number,
+    // ref-doc
+    blogPosts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'blogpost'
+    }]
 });
 
 UserSchema.virtual('postcount').get(function() {
