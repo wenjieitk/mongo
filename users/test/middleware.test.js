@@ -4,7 +4,7 @@ const User = require('../src/user');
 const BlogPost = require('../src/blogPost');
 
 describe('Middleware test', () =>{
-    let joe,blogPost;
+    let joe, blogPost, blogPost2;
 
     beforeEach((done) => {
         joe = new User({
