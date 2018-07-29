@@ -34,7 +34,7 @@ describe('Middleware test', () =>{
     it.only('it should clean up dangling blogposts on remove', (done) => {
         // middleware remove
         joe.remove()
-            .then(() => BlogPost.count())
+            .then(() => BlogPost.countDocuments())
             .then((count) => {
                 assert(count === 0);
                 done();
