@@ -11,7 +11,7 @@ describe('Associations ref testing', () => {
             name: 'Joe'
         });
 
-        blogPost = new blogPost({
+        blogPost = new BlogPost({
             title: 'blogPost',
             content: 'this is content of blogPost'
         });
@@ -20,7 +20,7 @@ describe('Associations ref testing', () => {
             content: 'this is content of comment'
         });
 
-        joe.blogPost.push(blogPost);
+        joe.blogPosts.push(blogPost);
         blogPost.comments.push(comment);
         comment.user = joe;
 

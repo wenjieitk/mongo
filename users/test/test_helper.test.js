@@ -26,7 +26,7 @@ before((done) => {
 // remove all the test data before each test start
 // test run only after the db data is remove
 beforeEach((done) => {
-    const { users, comments, blogposts } = mongoose.connection.collection;
+    const { users, comments, blogposts } = mongoose.connection.collections;
 
     // drop all the data collections
     users.drop(() => {
@@ -37,8 +37,8 @@ beforeEach((done) => {
         });
     });
 
-    mongoose.connection.collections.users.drop(() => {
-        // ready to run the next test
-        done();
-    });
+    // mongoose.connection.collections.users.drop(() => {
+    //     // ready to run the next test
+    //     done();
+    // });
 });
