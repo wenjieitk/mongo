@@ -33,7 +33,7 @@ describe('Associations ref testing', () => {
         });
     });
 
-    it('it should saves a relation between a user and a blogpost', (done) => {
+    it.only('it should saves a relation between a user and a blogpost', (done) => {
         User.findOne({
             name: 'Joe'
         }).then((user) => {
