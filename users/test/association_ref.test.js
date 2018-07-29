@@ -45,4 +45,23 @@ describe('Associations ref testing', () => {
         })
     });
 
+    it.only('it should saves a full relation graph', (done) => {
+        User.findOne({
+            name: 'Joe'
+        }).populate({
+            path: 'blogPosts', // find the blogposts, and load up all the associated blogposts
+            populate: {
+                path: 'comments', // load up all the comments belongs to the associated blogposts
+                model: 'comment',
+                populate: {
+                    path: 'user',
+                    model: 'user'
+                }
+            }
+        }).then((user) => {
+            console.log(JSON.stringify(user));
+            done();
+        })
+    });
+
 });
