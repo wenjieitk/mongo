@@ -37,6 +37,21 @@ UserSchema.virtual('postcount').get(function() {
     return this.posts.length;
 });
 
+// pre - middleware
+// call next for every middleware
+UserSchema.pre('remove', function(next){
+    // this === user instance
+
+    const BlogPost = mongoose.model('blogpost');
+
+    // mongo operator $in = without go through data retrieve to loop every single associated ref
+    BlogPost.remove({
+        _id: {
+            $in: this.blogPosts
+        }
+    }).then(() => next());
+});
+
 const User = mongoose.model('user', UserSchema); // User represent whole user collection of data
 
 module.exports = User;
