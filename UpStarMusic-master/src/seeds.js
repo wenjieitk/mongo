@@ -65,7 +65,7 @@ function getGenre() {
 }
 
 function randomEntry(array) {
-  return array[~~(Math.random() * array.length)];
+  return array[~~(Math.random() * array.length)]; // ~~5.5  => 5  (same as Math.floor(5.5))
 }
 
 function randomBetween(min, max) {
