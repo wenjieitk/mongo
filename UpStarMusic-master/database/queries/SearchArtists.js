@@ -53,6 +53,11 @@ const buidQuery = (criteria) => {
     }
 
     // $text search - required index
+    /** create index
+     * mongo
+     * use {db_name}
+     * db.{collection}.createIndex ({ property : "type_of_index" }) - db.artists.createIndex({name: "text"})
+     */
     if (criteria.name) {
         query.$text = {
             $search: criteria.name
