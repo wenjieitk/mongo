@@ -52,5 +52,12 @@ const buidQuery = (criteria) => {
         };
     }
 
+    // $text search - required index
+    if (criteria.name) {
+        query.$text = {
+            $search: criteria.name
+        };
+    }
+
     return query;
 };
