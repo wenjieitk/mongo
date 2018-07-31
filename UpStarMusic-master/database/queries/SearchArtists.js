@@ -16,23 +16,64 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
     console.log("limit : ", limit);
     console.log("criteria : ", criteria);
 
-    const query = Artist
-        .find(buidQuery(criteria))
-        .sort({ [sortProperty]: 1 }) // = { 'sortProperty' : 1 }
-        .skip(offset)
-        .limit(limit);
+    // const query = Artist
+    //     .find(buidQuery(criteria))
+    //     .sort({ [sortProperty]: 1 }) // = { 'sortProperty' : 1 }
+    //     .skip(offset)
+    //     .limit(limit);
 
-    return Promise.all([
-        query,
-        Artist.count()
-    ]).then((results) => {
+    // return Promise.all([
+    //     query,
+    //     Artist
+    //     .find(buidQuery(criteria))
+    //     .count()
+    // ]).then((results) => {
+    //     return {
+    //         all: results[0],
+    //         count: results[1],
+    //         offset,
+    //         limit
+    //     };
+    // });
+    
+    const request = Artist.aggregate([
+        {$match: buidQuery(criteria)},
+        {$sort: {[sortProperty]: 1}},
+        {
+            $group: {
+                _id: 'null',
+                count:
+                {$sum: 1},
+                results: {$push: '$$ROOT'}
+            }
+        },
+        {
+            '$unwind': '$results'
+        },
+        {$skip: offset},
+        {$limit: limit},
+        {
+            $project: {
+                _id: 1,
+                name: 1,
+                count: 1,
+                results: 1
+            }
+        }
+    ]);
+
+    return request.then(re => {
+        // Need to map over results and pull them out into their own array
+        const all = re.map(item => item.results)
+        console.log('re', all)
+       
         return {
-            all: results[0],
-            count: results[1],
-            offset,
-            limit
-        };
-    });
+          all: all,
+          count: re[0].count, // all items have count but just get the first one
+          offset: offset,
+          limit: limit
+        }
+      })
 };
 
 const buidQuery = (criteria) => {
