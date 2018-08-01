@@ -11,6 +11,7 @@ before(done => {
 
 beforeEach(done => {
     const {drivers} = mongoose.connection.collections;
+    // mongoose.connection.db.dropDatabase()
     drivers.drop()
         .then(() => done())
         .catch(() => done());
