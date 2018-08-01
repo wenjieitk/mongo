@@ -13,4 +13,10 @@ app.use(bodyParser.json());
 
 routes(app);
 
+// define middleware after routes
+// next -> go to next middleware
+app.use((err, req, res, next) => {
+    res.status(422).send({error: err.message});
+});
+
 module.exports = app;
