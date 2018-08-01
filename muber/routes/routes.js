@@ -2,7 +2,9 @@ const DriversController = require('../controllers/drivers_controller');
 
 module.exports = (app) => {
 
-    //req -> incoming requests; res -> outgoing response
+    // passing reference to controller
     app.get('/api', DriversController.greeting);
+
+    app.post('/api/drivers', DriversController.create);
     
 };

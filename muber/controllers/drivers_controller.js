@@ -1,9 +1,16 @@
 module.exports = {
 
     greeting(req,res) {
-        res.send({
-            hi: 'there'
+        res.send({ // send to client
+            hi: 'hi there'
         });
+    },
+
+    create(req, res) {
+        console.log(req.body);
+        res.send({ // send to client
+            hi: 'hi there'
+        });    
     }
 
 }
