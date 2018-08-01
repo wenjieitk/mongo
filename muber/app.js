@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 const app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/Users_test', { useNewUrlParser: true });
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect('mongodb://localhost:27017/muber', { useNewUrlParser: true });
+}
 
 app.use(bodyParser.json());
 
