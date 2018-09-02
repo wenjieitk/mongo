@@ -60,34 +60,4 @@ describe(' Driver controller test ', () => {
         });
     });
 
-    it('it should GET to /api/drivers finds drivers location', done => {
-        const driver1 = new Driver({
-            email: 'driver1@test.com',
-            geometry: {
-                type: 'Point',
-                coordinates: [-122.4759902, 47.6147628]
-            }
-        });
-
-        const driver2 = new Driver({
-            email: 'driver2@test.com',
-            geometry: {
-                type: 'Point',
-                coordinates: [-80.253, 25.791]
-            }
-        });
-
-        Promise.all([ driver1.save(),driver2.save()])
-            .then(() => {
-                request(app)
-                    .get('/api/drivers?lng=-80&lat=25')
-                    .end((err,res) => {
-                        console.log(res.body);
-                        done(); 
-                    });
-            })
-
-
-    });
-
 });
