@@ -6,7 +6,7 @@ const CommentSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'user'
-    }//dfd
+    }
 });
 
 const Comment = mongoose.model('comment', CommentSchema);
